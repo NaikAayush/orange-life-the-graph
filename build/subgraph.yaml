@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: OrangeLife
@@ -19,7 +19,7 @@ dataSources:
         - RevokedAccess
       abis:
         - name: OrangeLife
-          file: ./abis/OrangeLife.json
+          file: OrangeLife/abis/OrangeLife.json
       eventHandlers:
         - event: GrantedAccess(address,address,uint256)
           handler: handleGrantedAccess
@@ -29,4 +29,4 @@ dataSources:
           handler: handleRequestedAccess
         - event: RevokedAccess(address,address,uint256)
           handler: handleRevokedAccess
-      file: ./src/mapping.ts
+      file: OrangeLife/OrangeLife.wasm
