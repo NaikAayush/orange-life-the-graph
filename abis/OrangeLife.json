@@ -30,6 +30,12 @@
         "internalType": "uint256",
         "name": "idx",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "docCID",
+        "type": "string"
       }
     ],
     "name": "GrantedAccess",
@@ -49,6 +55,30 @@
         "internalType": "uint256",
         "name": "idx",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "docCID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "verifyingKey",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "publicKey",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "nonce",
+        "type": "uint32"
       }
     ],
     "name": "NewMedicalRecord",
@@ -74,6 +104,12 @@
         "internalType": "uint256",
         "name": "idx",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "docCID",
+        "type": "string"
       }
     ],
     "name": "RequestedAccess",
@@ -99,6 +135,12 @@
         "internalType": "uint256",
         "name": "idx",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "docCID",
+        "type": "string"
       }
     ],
     "name": "RevokedAccess",
@@ -106,10 +148,20 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "forwarder", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "forwarder",
+        "type": "address"
+      }
     ],
     "name": "isTrustedForwarder",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "view",
     "type": "function",
     "constant": true
@@ -117,7 +169,13 @@
   {
     "inputs": [],
     "name": "trustedForwarder",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "view",
     "type": "function",
     "constant": true
@@ -137,10 +195,26 @@
   },
   {
     "inputs": [
-      { "internalType": "string", "name": "docCID", "type": "string" },
-      { "internalType": "string", "name": "verifyingKey", "type": "string" },
-      { "internalType": "string", "name": "publicKey", "type": "string" },
-      { "internalType": "uint32", "name": "nonce", "type": "uint32" }
+      {
+        "internalType": "string",
+        "name": "docCID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "verifyingKey",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "publicKey",
+        "type": "string"
+      },
+      {
+        "internalType": "uint32",
+        "name": "nonce",
+        "type": "uint32"
+      }
     ],
     "name": "addMedicalRecord",
     "outputs": [],
@@ -149,20 +223,36 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "sender", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
     ],
     "name": "getMedicalRecords",
     "outputs": [
       {
         "components": [
-          { "internalType": "string", "name": "docCID", "type": "string" },
+          {
+            "internalType": "string",
+            "name": "docCID",
+            "type": "string"
+          },
           {
             "internalType": "string",
             "name": "verifyingKey",
             "type": "string"
           },
-          { "internalType": "string", "name": "publicKey", "type": "string" },
-          { "internalType": "uint32", "name": "nonce", "type": "uint32" },
+          {
+            "internalType": "string",
+            "name": "publicKey",
+            "type": "string"
+          },
+          {
+            "internalType": "uint32",
+            "name": "nonce",
+            "type": "uint32"
+          },
           {
             "internalType": "address[]",
             "name": "hasAccess",
@@ -185,21 +275,41 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "sender", "type": "address" },
-      { "internalType": "uint256", "name": "idx", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "idx",
+        "type": "uint256"
+      }
     ],
     "name": "getMedicalRecord",
     "outputs": [
       {
         "components": [
-          { "internalType": "string", "name": "docCID", "type": "string" },
+          {
+            "internalType": "string",
+            "name": "docCID",
+            "type": "string"
+          },
           {
             "internalType": "string",
             "name": "verifyingKey",
             "type": "string"
           },
-          { "internalType": "string", "name": "publicKey", "type": "string" },
-          { "internalType": "uint32", "name": "nonce", "type": "uint32" },
+          {
+            "internalType": "string",
+            "name": "publicKey",
+            "type": "string"
+          },
+          {
+            "internalType": "uint32",
+            "name": "nonce",
+            "type": "uint32"
+          },
           {
             "internalType": "address[]",
             "name": "hasAccess",
@@ -222,8 +332,16 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "sender", "type": "address" },
-      { "internalType": "uint256", "name": "idx", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "idx",
+        "type": "uint256"
+      }
     ],
     "name": "requestAccess",
     "outputs": [],
@@ -232,8 +350,16 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "addrToGrant", "type": "address" },
-      { "internalType": "uint256", "name": "idx", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "addrToGrant",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "idx",
+        "type": "uint256"
+      }
     ],
     "name": "grantAccess",
     "outputs": [],
@@ -242,8 +368,16 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "addrToRevoke", "type": "address" },
-      { "internalType": "uint256", "name": "idx", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "addrToRevoke",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "idx",
+        "type": "uint256"
+      }
     ],
     "name": "revokeAccess",
     "outputs": [],
@@ -253,8 +387,14 @@
   {
     "inputs": [],
     "name": "versionRecipient",
-    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
-    "stateMutability": "view",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "pure",
     "type": "function",
     "constant": true
   }
