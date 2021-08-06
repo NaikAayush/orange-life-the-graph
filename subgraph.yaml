@@ -6,9 +6,9 @@ dataSources:
     name: OrangeLife
     network: mumbai
     source:
-      address: "0xCad9331b1866990e1bC41108D3F2326f365Eb4C6"
+      address: "0xd96ed6120c5b94D0ff695680F646F38B3e3f01E5"
       abi: OrangeLife
-      startBlock: 17004731
+      startBlock: 17289759
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -24,7 +24,7 @@ dataSources:
       eventHandlers:
         - event: GrantedAccess(address,address,uint256)
           handler: handleGrantedAccess
-        - event: NewMedicalRecord(address,uint256)
+        - event: NewMedicalRecord(address,uint256,string,string,string,uint32)
           handler: handleNewMedicalRecord
         - event: RequestedAccess(address,address,uint256)
           handler: handleRequestedAccess
