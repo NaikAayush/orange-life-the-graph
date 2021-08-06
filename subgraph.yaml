@@ -5,10 +5,12 @@ dataSources:
   - kind: ethereum/contract
     name: OrangeLife
     network: mumbai
+    # network: mainnet
     source:
       address: "0xBC0E2a7b7147ADf6aF6aa3f1a5E78B4bf2b9aDac"
-      abi: OrangeLife
       startBlock: 17291815
+      # address: "0xC1F8757F2036Cb6193F37D3f2302a83812D97134"
+      abi: OrangeLife
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
