@@ -1,10 +1,10 @@
 type MedicalRecord @entity {
   id: ID!
-  owner: Bytes!
-  docCID: BigInt!
-  verifyingKey: Bytes!
-  publicKey: Bytes!
-  nonce: BigInt!
-  hasAccess: [Bytes!]!
-  accessRequested: [Bytes!]!
+  owner: Bytes
+  docCID: BigInt
+  verifyingKey: Bytes
+  publicKey: Bytes
+  nonce: BigInt
+  hasAccess: [Bytes!]
+  accessRequested: [Bytes!]
 }

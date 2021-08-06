@@ -6,8 +6,9 @@ dataSources:
     name: OrangeLife
     network: mumbai
     source:
-      address: "0x51F0d305c77D9aEd9b68E7e573C69ae1ABE480B4"
+      address: "0xCad9331b1866990e1bC41108D3F2326f365Eb4C6"
       abi: OrangeLife
+      startBlock: 17004731
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
