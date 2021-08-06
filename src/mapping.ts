@@ -40,9 +40,13 @@ export function handleGrantedAccess(event: GrantedAccess): void {
 
 export function handleRevokedAccess(event: RevokedAccess): void {
   let medRecord = MedicalRecord.load(event.params.docCID);
+  let hasAccess = medRecord.hasAccess;
   // owner is actually addrToRevoke
-  medRecord.hasAccess = medRecord.hasAccess.filter((addr) => {
-    return addr != event.params.owner.toHexString();
-  });
+  let addrToRevoke = event.params.owner.toHexString();
+  let index = hasAccess.indexOf(addrToRevoke);
+  if (index > -1) {
+    hasAccess.splice(index, 1);
+  }
+  medRecord.hasAccess = hasAccess;
   medRecord.save();
 }
