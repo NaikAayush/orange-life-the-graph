@@ -6,9 +6,9 @@ dataSources:
     name: OrangeLife
     network: mumbai
     source:
-      address: "0xd96ed6120c5b94D0ff695680F646F38B3e3f01E5"
+      address: "0xBC0E2a7b7147ADf6aF6aa3f1a5E78B4bf2b9aDac"
       abi: OrangeLife
-      startBlock: 17289759
+      startBlock: 17291815
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -22,12 +22,12 @@ dataSources:
         - name: OrangeLife
           file: ./abis/OrangeLife.json
       eventHandlers:
-        - event: GrantedAccess(address,address,uint256)
+        - event: GrantedAccess(address,address,uint256,string)
           handler: handleGrantedAccess
         - event: NewMedicalRecord(address,uint256,string,string,string,uint32)
           handler: handleNewMedicalRecord
-        - event: RequestedAccess(address,address,uint256)
+        - event: RequestedAccess(address,address,uint256,string)
           handler: handleRequestedAccess
-        - event: RevokedAccess(address,address,uint256)
+        - event: RevokedAccess(address,address,uint256,string)
           handler: handleRevokedAccess
       file: ./src/mapping.ts
