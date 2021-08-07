@@ -1,6 +1,4 @@
-import { Bytes } from "@graphprotocol/graph-ts";
 import {
-  OrangeLife,
   GrantedAccess,
   NewMedicalRecord,
   RequestedAccess,
@@ -18,6 +16,9 @@ export function handleNewMedicalRecord(event: NewMedicalRecord): void {
   medRecord.nonce = event.params.nonce;
   medRecord.hasAccess = [medRecord.owner];
   medRecord.accessRequested = [];
+  medRecord.docName = event.params.docName;
+  medRecord.docMimeType = event.params.docMimeType;
+  medRecord.extraData = event.params.extraData;
   medRecord.save();
 }
 

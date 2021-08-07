@@ -7,8 +7,8 @@ dataSources:
     network: mumbai
     # network: mainnet
     source:
-      address: "0xAd7879348C00AD6E5c88E418b7E66A0D386Ee733"
-      startBlock: 17344416
+      address: "0x9cc6c1FB0ee80a2389a286da0BB7903dE0175172"
+      startBlock: 17346738
       # address: "0xC1F8757F2036Cb6193F37D3f2302a83812D97134"
       abi: OrangeLife
     mapping:
@@ -26,7 +26,7 @@ dataSources:
       eventHandlers:
         - event: GrantedAccess(address,address,uint256,string)
           handler: handleGrantedAccess
-        - event: NewMedicalRecord(address,uint256,string,string,string,uint32)
+        - event: NewMedicalRecord(address,uint256,string,string,string,string,string,string,uint32)
           handler: handleNewMedicalRecord
         - event: RequestedAccess(address,address,uint256,string)
           handler: handleRequestedAccess

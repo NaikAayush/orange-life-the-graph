@@ -1,11 +1,14 @@
 type MedicalRecord @entity {
   id: ID!
   idx: BigInt!
-  owner: String!
-  docCID: String!
-  verifyingKey: String!
+  docName: String!
+  docMimeType: String!
   publicKey: String!
+  docCID: String!
+  owner: String!
+  verifyingKey: String!
   nonce: BigInt!
+  extraData: String!
   hasAccess: [String!]
   accessRequested: [String!]
 }
