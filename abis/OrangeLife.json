@@ -1,401 +1,564 @@
 [
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_trustedForwarder",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "requestor",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "docCID",
-        "type": "string"
-      }
-    ],
-    "name": "GrantedAccess",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "docCID",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "verifyingKey",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "publicKey",
-        "type": "string"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint32",
-        "name": "nonce",
-        "type": "uint32"
-      }
-    ],
-    "name": "NewMedicalRecord",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "requestor",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "docCID",
-        "type": "string"
-      }
-    ],
-    "name": "RequestedAccess",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "requestor",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "docCID",
-        "type": "string"
-      }
-    ],
-    "name": "RevokedAccess",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "forwarder",
-        "type": "address"
-      }
-    ],
-    "name": "isTrustedForwarder",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "trustedForwarder",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_trustedForwarder",
-        "type": "address"
-      }
-    ],
-    "name": "setTrustedForwarder",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "docCID",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "verifyingKey",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "publicKey",
-        "type": "string"
-      },
-      {
-        "internalType": "uint32",
-        "name": "nonce",
-        "type": "uint32"
-      }
-    ],
-    "name": "addMedicalRecord",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      }
-    ],
-    "name": "getMedicalRecords",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "string",
-            "name": "docCID",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "verifyingKey",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "publicKey",
-            "type": "string"
-          },
-          {
-            "internalType": "uint32",
-            "name": "nonce",
-            "type": "uint32"
-          },
-          {
-            "internalType": "address[]",
-            "name": "hasAccess",
-            "type": "address[]"
-          },
-          {
-            "internalType": "address[]",
-            "name": "accessRequested",
-            "type": "address[]"
-          }
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "forwarder",
+                "type": "address"
+            }
         ],
-        "internalType": "struct OrangeLife.MedicalRecord[]",
-        "name": "records",
-        "type": "tuple[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      }
-    ],
-    "name": "getMedicalRecord",
-    "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "string",
-            "name": "docCID",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "verifyingKey",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "publicKey",
-            "type": "string"
-          },
-          {
-            "internalType": "uint32",
-            "name": "nonce",
-            "type": "uint32"
-          },
-          {
-            "internalType": "address[]",
-            "name": "hasAccess",
-            "type": "address[]"
-          },
-          {
-            "internalType": "address[]",
-            "name": "accessRequested",
-            "type": "address[]"
-          }
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "requestor",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "docCID",
+                "type": "string"
+            }
         ],
-        "internalType": "struct OrangeLife.MedicalRecord",
-        "name": "record",
-        "type": "tuple"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      }
-    ],
-    "name": "requestAccess",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "addrToGrant",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      }
-    ],
-    "name": "grantAccess",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "addrToRevoke",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "idx",
-        "type": "uint256"
-      }
-    ],
-    "name": "revokeAccess",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "versionRecipient",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function",
-    "constant": true
-  }
+        "name": "GrantedAccess",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "docCID",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "verifyingKey",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "publicKey",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "docName",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "docMimeType",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "extraData",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint32",
+                "name": "nonce",
+                "type": "uint32"
+            }
+        ],
+        "name": "NewMedicalRecord",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "requestor",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "docCID",
+                "type": "string"
+            }
+        ],
+        "name": "RequestedAccess",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "requestor",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "docCID",
+                "type": "string"
+            }
+        ],
+        "name": "RevokedAccess",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "_prev",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "_preOwner",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "_current",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "_currentOwner",
+                "type": "address"
+            }
+        ],
+        "name": "StringUpdated",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "deployer",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "forwarder",
+                "type": "address"
+            }
+        ],
+        "name": "isTrustedForwarder",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [],
+        "name": "trustedForwarder",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "docCID",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "verifyingKey",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "publicKey",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "docName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "docMimeType",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "extraData",
+                "type": "string"
+            },
+            {
+                "internalType": "uint32",
+                "name": "nonce",
+                "type": "uint32"
+            }
+        ],
+        "name": "addMedicalRecord",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            }
+        ],
+        "name": "getMedicalRecords",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "docCID",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "verifyingKey",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "publicKey",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "docName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "docMimeType",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "extraData",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "nonce",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "address[]",
+                        "name": "hasAccess",
+                        "type": "address[]"
+                    },
+                    {
+                        "internalType": "address[]",
+                        "name": "accessRequested",
+                        "type": "address[]"
+                    }
+                ],
+                "internalType": "struct OrangeLife.MedicalRecord[]",
+                "name": "records",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            }
+        ],
+        "name": "getMedicalRecord",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "docCID",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "verifyingKey",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "publicKey",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "docName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "docMimeType",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "extraData",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint32",
+                        "name": "nonce",
+                        "type": "uint32"
+                    },
+                    {
+                        "internalType": "address[]",
+                        "name": "hasAccess",
+                        "type": "address[]"
+                    },
+                    {
+                        "internalType": "address[]",
+                        "name": "accessRequested",
+                        "type": "address[]"
+                    }
+                ],
+                "internalType": "struct OrangeLife.MedicalRecord",
+                "name": "record",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "sender",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            }
+        ],
+        "name": "requestAccess",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addrToGrant",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            }
+        ],
+        "name": "grantAccess",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "addrToRevoke",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "idx",
+                "type": "uint256"
+            }
+        ],
+        "name": "revokeAccess",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getTrustedForwarder",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "forwarder",
+                "type": "address"
+            }
+        ],
+        "name": "setTrustedForwarder",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getString",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [],
+        "name": "getStringOwner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_string",
+                "type": "string"
+            }
+        ],
+        "name": "update",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "versionRecipient",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+    }
 ]
