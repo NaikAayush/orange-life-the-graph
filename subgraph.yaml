@@ -9,7 +9,7 @@ dataSources:
     source:
       address: "0x9cc6c1FB0ee80a2389a286da0BB7903dE0175172"
       startBlock: 17346738
-      # address: "0xC1F8757F2036Cb6193F37D3f2302a83812D97134"
+      # address: "0x906Dbd08CcC2934524257f011F43c38c34531300"
       abi: OrangeLife
     mapping:
       kind: ethereum/events

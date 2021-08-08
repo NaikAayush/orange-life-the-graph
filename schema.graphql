@@ -12,3 +12,11 @@ type MedicalRecord @entity {
   hasAccess: [String!]
   accessRequested: [String!]
 }
+
+type Timeline @entity {
+  id: ID!
+  type: String!
+  data: String!
+  timestamp: BigInt!
+  docCID: ID!
+}

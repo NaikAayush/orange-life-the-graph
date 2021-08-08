@@ -4,7 +4,7 @@ import {
   RequestedAccess,
   RevokedAccess,
 } from "../generated/OrangeLife/OrangeLife";
-import { MedicalRecord } from "../generated/schema";
+import { MedicalRecord, Timeline } from "../generated/schema";
 
 export function handleNewMedicalRecord(event: NewMedicalRecord): void {
   let medRecord = new MedicalRecord(event.params.docCID);
@@ -19,7 +19,15 @@ export function handleNewMedicalRecord(event: NewMedicalRecord): void {
   medRecord.docName = event.params.docName;
   medRecord.docMimeType = event.params.docMimeType;
   medRecord.extraData = event.params.extraData;
+
+  let timeline = new Timeline(event.transaction.from.toHex());
+  timeline.type = "NewRecord";
+  timeline.data = "Created new record by " + medRecord.publicKey;
+  timeline.timestamp = event.block.timestamp;
+  timeline.docCID = medRecord.id;
+
   medRecord.save();
+  timeline.save();
 }
 
 export function handleRequestedAccess(event: RequestedAccess): void {
@@ -27,7 +35,15 @@ export function handleRequestedAccess(event: RequestedAccess): void {
   let accessRequested = medRecord.accessRequested;
   accessRequested.push(event.params.requestor.toHexString());
   medRecord.accessRequested = accessRequested;
+
+  let timeline = new Timeline(event.transaction.from.toHex());
+  timeline.type = "RequestedAcccess";
+  timeline.data = "Access requested by " + event.params.requestor.toHexString();
+  timeline.timestamp = event.block.timestamp;
+  timeline.docCID = event.params.docCID;
+
   medRecord.save();
+  timeline.save();
 }
 
 export function handleGrantedAccess(event: GrantedAccess): void {
@@ -36,7 +52,15 @@ export function handleGrantedAccess(event: GrantedAccess): void {
   // owner is actually addrToGrant
   hasAccess.push(event.params.owner.toHexString());
   medRecord.hasAccess = hasAccess;
+
+  let timeline = new Timeline(event.transaction.from.toHex());
+  timeline.type = "GrantedAccess";
+  timeline.data = "Access granted to " + event.params.owner.toHexString();
+  timeline.timestamp = event.block.timestamp;
+  timeline.docCID = event.params.docCID;
+
   medRecord.save();
+  timeline.save();
 }
 
 export function handleRevokedAccess(event: RevokedAccess): void {
@@ -49,5 +73,13 @@ export function handleRevokedAccess(event: RevokedAccess): void {
     hasAccess.splice(index, 1);
   }
   medRecord.hasAccess = hasAccess;
+
+  let timeline = new Timeline(event.transaction.from.toHex());
+  timeline.type = "RevokedAccess";
+  timeline.data = "Access revoked from " + addrToRevoke;
+  timeline.timestamp = event.block.timestamp;
+  timeline.docCID = event.params.docCID;
+
   medRecord.save();
+  timeline.save();
 }
