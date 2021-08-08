@@ -14,7 +14,7 @@ export function handleNewMedicalRecord(event: NewMedicalRecord): void {
   medRecord.verifyingKey = event.params.verifyingKey;
   medRecord.publicKey = event.params.publicKey;
   medRecord.nonce = event.params.nonce;
-  medRecord.hasAccess = [medRecord.owner];
+  medRecord.hasAccess = [];
   medRecord.accessRequested = [];
   medRecord.docName = event.params.docName;
   medRecord.docMimeType = event.params.docMimeType;
