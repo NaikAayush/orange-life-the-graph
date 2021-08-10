@@ -1,6 +1,6 @@
 {
   "name": "orange-life-v1",
-  "license": "UNLICENSED",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
